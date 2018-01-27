@@ -57,13 +57,13 @@ class Imagespider(object):
 		image = urllib2.urlopen(request).read()
 		filename = src[-10:]
 		# 写入
-		print "正在下载" + filename
+		print "downloading->" + filename
 
 		# 进入到images目录
 		os.chdir(r"../images/")
 		with open(filename,"wb") as f :
 			f.write(image)
-		print "下载完成"
+		print "download completion"
 	def spider(self,url,start,end):
 
 		for page in range(start,end+1):
@@ -75,9 +75,9 @@ class Imagespider(object):
 
 if __name__ == '__main__':
 	headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"}
-	key = raw_input("输入要爬取的贴吧名:")
-	start = int(raw_input("输入爬取的起始页:"))
-	end = int(raw_input("输入爬取的结束页:"))
+	key = raw_input("name:")
+	start = int(raw_input("start:"))
+	end = int(raw_input("end:"))
 	wd = {"kw":key}
 	wd = urllib.urlencode(wd)
 	fullurl = "https://tieba.baidu.com/f?" + wd
